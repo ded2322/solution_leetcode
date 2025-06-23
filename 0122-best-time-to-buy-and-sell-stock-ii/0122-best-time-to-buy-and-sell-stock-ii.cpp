@@ -2,6 +2,7 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         // Алгоритимческая сложность O(n)
+        // Сложность по памяти O(1)
         int max_profit {0};
 
         for (std::size_t index {0}; index < std::size(prices) - 1; ++index) {
