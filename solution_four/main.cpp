@@ -1,3 +1,10 @@
+/*
+*
+* Алгоритмическая сложность O(n)
+* Сложность по памяти O(n) 
+* 
+*/
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -25,6 +32,5 @@ std::string convert_number(int&& input) {
 }
 
 int main() {
-
     std::cout << "Number in str: " << convert_number(123) << "\n";
 }
