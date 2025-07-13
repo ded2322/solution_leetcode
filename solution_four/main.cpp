@@ -1,7 +1,7 @@
 /*
 *
-* Алгоритмическая сложность O(n)
-* Сложность по памяти O(n) 
+* Алгоритмическая сложность O(log n)
+* Сложность по памяти O(log  n) 
 * 
 */
 
@@ -11,26 +11,30 @@
 #include <algorithm>
 
 
-std::string convert_number(int&& input) {
+std::string convert_number(int input) {
     if (!input) return "0";
 
-    int number;
-    std::string output {""};
-    int size = (int)log10(input);
+    bool is_negaitve = input < 0;
+    input = is_negaitve ? -input : input;
 
-    for (int index {0}; size >= index; ++index) {
-        number = input % 10;
+    int size = (int)log10(input) + 1;
+    if (is_negaitve) size += 1;
+    
+    std::string output (size, ' ');
+
+    for (int index {size}; index > 0; --index) {
+        int number { input % 10};
         input /=10;
 
         char char_number = '0' + number;
-        output += char_number;
+        output[index-1] = char_number;
     }
-
-    std::reverse(output.begin(), output.end());
-
+    if (is_negaitve) output[0] = '-';
     return output;
 }
 
 int main() {
-    std::cout << "Number in str: " << convert_number(123) << "\n";
+    std::cout << "Number in str: " << convert_number(-123) << "\n";
+    // std::string output (3, ' ');
+    // std::cout << output[0]; 
 }
