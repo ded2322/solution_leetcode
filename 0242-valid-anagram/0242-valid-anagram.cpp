@@ -1,8 +1,17 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        std::sort(s.begin(), s.end());
-        std::sort(t.begin(), t.end());
-        return t == s;   
+        // O (n)
+        std::array<int, 26> anagram_letter{};
+        for (char letter : s) {
+            anagram_letter[letter - 'a'] += 1;
+        }
+        for (char letter : t) {
+            anagram_letter[letter - 'a'] -= 1;
+        }
+        for ( int a : anagram_letter) {
+            if (a != 0) return false;
+        }
+        return true;
     }
 };
