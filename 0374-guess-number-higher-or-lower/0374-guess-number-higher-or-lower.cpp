@@ -10,15 +10,18 @@
 class Solution {
 public:
     int guessNumber(int n) {
-        int current_position = n / 2;
+        int right_position{ 0 };
+        int left_position = n;
 
-        while ( true ) {
-            int currect = guess(current_position);
-            if ( currect == -1 )
-                current_position--;
+        while (right_position < left_position ) {
+            int middle_position = (right_position + left_position) / 2;
+
+            int currect = gues_number(middle_position);
+            if (currect == -1)
+                left_position = middle_position - 1;
             else if (currect == 1)
-                current_position++;
-            else return current_position;
+                right_position = middle_position + 1;
+            else return middle_position;
         }
         return 0;
     }   
