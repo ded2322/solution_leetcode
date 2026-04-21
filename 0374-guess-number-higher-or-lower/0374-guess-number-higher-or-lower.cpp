@@ -14,7 +14,7 @@ public:
         int left_position{ 1 } ;
 
         while (left_position <= right_position) {
-            int middle_position = (right_position + left_position) / 2;
+            int middle_position = left_position + (right_position - left_position) / 2;
 
             int currect = guess(middle_position);
             if (currect == -1)
