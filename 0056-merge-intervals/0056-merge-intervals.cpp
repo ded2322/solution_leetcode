@@ -8,7 +8,7 @@ public:
             auto& past_array = output[output.size() - 1];
 
             if (past_array[1] >= intervals[i][0])
-                past_array[1] = std::max( std::max(past_array[0], past_array[1]), std::max(intervals[i][0], intervals[i][1]));
+                past_array[1] = std::max(past_array[1], intervals[i][1]);
             else
                 output.push_back({ intervals[i]});
         }
